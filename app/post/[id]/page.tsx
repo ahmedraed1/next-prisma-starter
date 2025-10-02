@@ -1,5 +1,6 @@
 import React from "react";
 import prisma from "@/lib/prisma";
+import DeletingPost from "@/components/DeletingPost";
 
 export default async function page({
   params,
@@ -33,6 +34,7 @@ export default async function page({
       <p>by {post.author?.name}</p>
       <p>Published on {post.createdAt.toDateString()}</p>
       <p>{post.content}</p>
+      <DeletingPost postId={post.id} />
     </div>
   );
 }
