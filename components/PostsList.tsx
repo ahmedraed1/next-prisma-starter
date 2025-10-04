@@ -15,7 +15,7 @@ export default function PostsList({ initialPosts }: { initialPosts: Post[] }) {
           <span>{post?.createdAt?.toLocaleDateString()}</span>
           <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
           <p className="text-gray-700">{post.content}</p>
-          {/* <p>by {post?.author?.name}</p> */}
+          <p>by {post?.author?.name}</p>
         </div>
       ))}
     </div>
