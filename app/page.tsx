@@ -1,18 +1,15 @@
 import NewPost from "@/components/NewPost";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
+import { getPosts } from "@/app/actions/actions";
 
 export default async function Home() {
   const users = await prisma.user.findMany();
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    include: { author: true },
-  });
-  console.log(posts);
+  const posts = await getPosts();
 
   const postsLength = await prisma.post.count();
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center -mt-16">
+    <div className=" bg-gray-50 flex flex-col items-center justify-center">
       <h1 className="text-4xl font-bold mb-8 font-[family-name:var(--font-geist-sans)] text-[#333333]">
         Superblog
       </h1>

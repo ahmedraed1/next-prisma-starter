@@ -3,6 +3,18 @@
 import prisma from "@/lib/prisma";
 
 
+export async function getPosts() {
+    return await prisma.post.findMany({
+        where: {
+            published: true,
+        },
+        include: {
+            author: true,
+        },
+    });
+}
+
+
 export async function createPost(formData: FormData) {
     const title = formData.get("title") as string;
     const content = formData.get("content") as string;
